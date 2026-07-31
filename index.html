@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>餐厨财务工作台</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css?v=26">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>餐厨</h1>
+        <p>财务工作台</p>
+      </div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-item active" data-page="dashboard">
+          <span class="icon">&#x1F4CA;</span>
+          <span>经营驾驶舱</span>
+        </div>
+        <div class="nav-item" data-page="bookkeeping">
+          <span class="icon">&#x270D;</span>
+          <span>记账</span>
+        </div>
+        <div class="nav-item" data-page="reports">
+          <span class="icon">&#x1F4C4;</span>
+          <span>财务报表</span>
+        </div>
+        <div class="nav-item" data-page="analysis">
+          <span class="icon">&#x1F50D;</span>
+          <span>收入成本分析</span>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-item" data-page="taxplanning">
+          <span class="icon">&#x1F4B0;</span>
+          <span>税筹中心</span>
+        </div>
+        <div class="nav-item" data-page="settlement">
+          <span class="icon">&#x1F4E6;</span>
+          <span>外卖对账</span>
+        </div>
+        <div class="nav-item" data-page="receivables">
+          <span class="icon">&#x1F4B3;</span>
+          <span>应收应付</span>
+        </div>
+        <div class="nav-item" data-page="inventory">
+          <span class="icon">&#x1F6D2;</span>
+          <span>进销存</span>
+        </div>
+        <div class="nav-item" data-page="purchasing">
+          <span class="icon">&#x1F4E6;</span>
+          <span>采购</span>
+        </div>
+        <div class="nav-item" data-page="menu">
+          <span class="icon">&#x1F372;</span>
+          <span>菜品库</span>
+        </div>
+        <div class="nav-item" data-page="settings">
+          <span class="icon">&#x2699;</span>
+          <span>设置</span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- 主内容 -->
+    <div class="main-content">
+      <!-- 只读模式提示 -->
+      <div id="readonlyBanner" style="display:none;padding:6px 24px;background:rgba(99,102,241,0.1);border-bottom:0.5px solid rgba(99,102,241,0.2);font-size:11px;color:#4338ca;text-align:center">
+        &#x1F512; 只读分享模式 — 合伙人可查看经营状况，数据不可修改
+      </div>
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle" onclick="App.toggleMobileMenu()" aria-label="打开菜单">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-title" id="pageTitle">经营驾驶舱</div>
+        </div>
+        <div class="topbar-actions">
+          <select class="store-selector" id="storeSelector">
+            <option value="store_1">总店</option>
+          </select>
+          <button class="btn btn-sm btn-outline" id="shareBtn" onclick="App.showShareModal()" title="分享给合伙人">&#x1F517;<span class="btn-label">分享</span></button>
+          <button class="btn btn-sm btn-outline" onclick="App.loadDemoData()"><span class="btn-label">加载演示数据</span></button>
+        </div>
+      </header>
+      <!-- 移动端侧边栏遮罩 -->
+      <div class="sidebar-overlay" id="sidebarOverlay" onclick="App.closeMobileMenu()"></div>
+      <main class="page-content" id="pageContent">
+        <!-- 页面内容动态渲染 -->
+      </main>
+    </div>
+  </div>
+
+  <!-- 弹窗容器 -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent"></div>
+  </div>
+
+  <script src="js/data.js?v=26"></script>
+  <script src="js/pages/dashboard.js?v=26"></script>
+  <script src="js/pages/bookkeeping.js?v=26"></script>
+  <script src="js/pages/reports.js?v=26"></script>
+  <script src="js/pages/analysis.js?v=26"></script>
+  <script src="js/pages/menu.js?v=26"></script>
+  <script src="js/pages/taxplanning.js?v=26"></script>
+  <script src="js/pages/settings.js?v=26"></script>
+  <script src="js/pages/settlement.js?v=26"></script>
+  <script src="js/pages/receivables.js?v=26"></script>
+  <script src="js/pages/inventory.js?v=26"></script>
+  <script src="js/pages/purchasing.js?v=26"></script>
+  <script src="js/app.js?v=26"></script>
+</body>
+</html>
